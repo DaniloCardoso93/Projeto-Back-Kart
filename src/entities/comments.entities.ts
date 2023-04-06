@@ -16,11 +16,11 @@ import User from "./user.entities"
     @Column({length:500})
     description:string
 
-    @ManyToOne( () => Announcement, (announcement)=> announcement.comments)
-    announcement:Announcement
+   //  @ManyToOne( () => Announcement, (announcement)=> announcement.comments)
+   //  announcement:Announcement
 
-    @ManyToOne( ()=> User, (user)=>user.comments)
-    user:User
+   //  @ManyToOne( ()=> User, (user)=>user.comments)
+   //  user:User
  }
 
 

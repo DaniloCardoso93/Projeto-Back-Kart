@@ -50,11 +50,11 @@ import Comment from "./comments.entities"
     @Column({default:true})
     isActive:boolean
 
-    @OneToMany(() => Announcement, (announcements) => announcements.user)
-    announcements:Announcement[]
+    // @OneToMany(() => Announcement, (announcements) => announcements.user)
+    // announcements:Announcement[]
 
-    @OneToMany(() => Comment, (comments)=> comments.user)
-    comments:Comment[]
+    // @OneToMany(() => Comment, (comments)=> comments.user)
+    // comments:Comment[]
 
     @BeforeUpdate()
     @BeforeInsert()
