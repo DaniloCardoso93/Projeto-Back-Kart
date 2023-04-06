@@ -29,7 +29,7 @@ import Comment from "./comments.entities"
     @Column({length: 14})
     birthdate:string
 
-    @Column({length: 100})
+    @Column({length: 150})
     password:string
 
     @Column({length: 14, unique:true})
