@@ -1,1 +1,6 @@
-import { Router } from "express"
+import { advertiseRouter } from "./advertiseRouter"
+
+
+export {
+    advertiseRouter,
+}
