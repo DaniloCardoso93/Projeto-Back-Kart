@@ -43,7 +43,7 @@ import Comment from "./comments.entities"
     @Column({length:250})
     description:string
 
-    @Column({length:50})
+    @Column()
     isPublished:boolean
 
     @CreateDateColumn()
