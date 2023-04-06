@@ -12,7 +12,7 @@ import Announcement from "./announcement.entities"
 import Comment from "./comments.entities"
 
  @Entity("users")
- class User{
+ class User {
 
     @PrimaryGeneratedColumn("uuid")
     id:string
