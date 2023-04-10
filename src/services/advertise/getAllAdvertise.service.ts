@@ -1,8 +1,9 @@
+import Announcement from "../../entities/announcement.entities"
 import { announcementRepo } from "../../repositories"
 
-const getAllAdvertiseService = async () => {
+const getAllAdvertiseService = async ():Promise<Announcement[]> => {
     const advertise = await announcementRepo.find()
-    // SE NECESSARIO USAR O SERIALIZER .validate
+
     return advertise
 }
 

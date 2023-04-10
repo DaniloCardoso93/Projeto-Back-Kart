@@ -52,7 +52,7 @@ import Comment from "./comments.entities"
     @UpdateDateColumn()
     updatedAt:Date
 
-    @OneToMany(() => Image, (images)=> images.announcement)
+    @OneToMany(() => Image, (images)=> images.announcement, {onDelete:"CASCADE"})
     images:Image[]
 
    //  @ManyToOne(() => User, (user)=> user.announcements)

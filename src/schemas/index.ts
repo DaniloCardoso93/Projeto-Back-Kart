@@ -1,6 +1,8 @@
-import * as yup from "yup"
+import { registerAdvertise, returnRegisterAdvertise, returnUpdateAdvertise, updateAdvertise } from "./advertise.schema";
 
-export const SchemaPadrao = {
-    name:yup.string().required(),
-    email:yup.string().required()
+export {
+    registerAdvertise,
+    updateAdvertise,
+    returnRegisterAdvertise,
+    returnUpdateAdvertise,
 }

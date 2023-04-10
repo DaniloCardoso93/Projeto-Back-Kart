@@ -1,7 +1,23 @@
+import Announcement from "../../entities/announcement.entities"
+import { AppError } from "../../errors"
+import { iUpdateAdvertiseData } from "../../interfaces/advertise.interfaces"
 import { announcementRepo } from "../../repositories"
+import { returnUpdateAdvertise } from "../../schemas/advertise.schema"
 
-const patchAdvertiseService = async (data:any, advertiseId:string):Promise<any> => {
-    const findAdvertise = await announcementRepo.findOneBy({id: advertiseId})
+const patchAdvertiseService = async (data:iUpdateAdvertiseData, advertiseId:string):Promise<Announcement> => {
+
+    const findAdvertise = await announcementRepo.findOne({
+        where:{
+            id:advertiseId
+        },
+        relations:{
+            images:true
+        }
+    })
+
+    if(!findAdvertise){
+        throw new AppError("Advertise not found!", 404)
+    }
 
     const updateAdvertise = announcementRepo.create({
         ...findAdvertise,
@@ -9,7 +25,7 @@ const patchAdvertiseService = async (data:any, advertiseId:string):Promise<any> 
     })
 
     await announcementRepo.save(updateAdvertise)
-// SE NECESSARIO USAR O SERIALIZER .validate
+    
     return updateAdvertise
 }
 
