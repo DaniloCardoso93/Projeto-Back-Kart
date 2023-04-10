@@ -1,13 +1,13 @@
 import {Request, Response } from "express"
 import { deleteAdvertiseService, getAdvertiseByIdService, getAllAdvertiseService, patchAdvertiseService, postAdvertiseService } from "../services";
-
+import Announcement from "../entities/announcement.entities";
 
 const getAllAdvertiseController = async (
     req: Request,
     res: Response
   ) => {
-    const data = await getAllAdvertiseService();
-    return res.status(200).json(data);
+    const {pagination, announcement} = await getAllAdvertiseService(req);
+    return res.status(200).json({...pagination, announcement:{...announcement}});
 };
 
 

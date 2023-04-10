@@ -34,3 +34,18 @@ export interface iUpdateAdvertiseData {
 export interface iImages{
     img:string
 }
+
+
+export interface iPagination{
+    page: number;
+    pageSize: number;
+    total: number;
+    totalPages: number;
+    nextPage: number;
+    previusPage: number;
+}
+
+export interface iListAdvertiseWithPage{
+    pagination:iPagination
+    announcement:iAdvertiseResponse[]
+}
