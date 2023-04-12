@@ -1,7 +1,7 @@
 import Announcement from "../../entities/announcement.entities"
 import { AppError } from "../../errors"
 import { iUpdateAdvertiseData } from "../../interfaces/advertise.interfaces"
-import { announcementRepo } from "../../repositories"
+import { announcementRepo, imageRepo } from "../../repositories"
 import { returnUpdateAdvertise } from "../../schemas/advertise.schema"
 
 const patchAdvertiseService = async (data:iUpdateAdvertiseData, advertiseId:string):Promise<Announcement> => {
@@ -19,6 +19,15 @@ const patchAdvertiseService = async (data:iUpdateAdvertiseData, advertiseId:stri
     
         if(!findAdvertise){
             throw new AppError("Advertise not found!", 404)
+        }
+        if(data.images){
+            data.images.forEach(async(element)=>{
+                const images = imageRepo.create(element)
+                await imageRepo.save({
+                    ...images,
+                    announcement:findAdvertise
+                })
+            })
         }
     
         const updateAdvertise = announcementRepo.create({
