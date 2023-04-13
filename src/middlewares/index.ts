@@ -1,4 +1,4 @@
-import { padrao } from "./ensureAuthMiddleware";
+import { padrao } from "./ensureAuth.middleware";
 
 
 export{
