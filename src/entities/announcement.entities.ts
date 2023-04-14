@@ -22,14 +22,14 @@ import Comment from "./comments.entities"
     @Column({length:50})
     model:string
 
-    @Column({length:10})
-    year:string
+    @Column()
+    year:number
 
     @Column({length:100})
     fuel:string
 
-    @Column({length:50})
-    odometer:string
+    @Column()
+    odometer:number
 
     @Column({length:50})
     color:string
@@ -37,13 +37,13 @@ import Comment from "./comments.entities"
     @Column({length:50})
     fipe:string
 
-    @Column({length:50})
-    price:string
+    @Column()
+    price:number
 
     @Column({length:250})
     description:string
 
-    @Column()
+    @Column({default:true})
     isPublished:boolean
 
     @CreateDateColumn()
