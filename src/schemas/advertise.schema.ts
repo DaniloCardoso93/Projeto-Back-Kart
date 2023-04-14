@@ -12,7 +12,6 @@ export const registerAdvertise = yup.object().shape({
     fipe: yup.string().required(),
     price: yup.number().required(),
     description: yup.string().required(),
-    isPublished: yup.boolean().required(),
     images:yup.array().of(yup.object().shape({
         img:yup.string().required()
     }))
