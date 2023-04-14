@@ -5,14 +5,13 @@ import * as yup from "yup";
 export const registerAdvertise = yup.object().shape({
     brand: yup.string().required(),
     model: yup.string().required(),
-    year: yup.string().required().matches(/^[0-9\/]{0,9}$/, "O ano deve conter apenas números ou /, ex: 2020/2021"),
+    year: yup.number().required(),
     fuel: yup.string().required(),
-    odometer: yup.string().required(),
+    odometer: yup.number().required(),
     color: yup.string().required(),
     fipe: yup.string().required(),
-    price: yup.string().required(),
+    price: yup.number().required(),
     description: yup.string().required(),
-    isPublished: yup.boolean().required(),
     images:yup.array().of(yup.object().shape({
         img:yup.string().required()
     }))
@@ -20,12 +19,12 @@ export const registerAdvertise = yup.object().shape({
 export const updateAdvertise = yup.object().shape({
     brand: yup.string().notRequired(),
     model: yup.string().notRequired(),
-    year: yup.string().matches(/^[0-9\/]{0,9}$/, "O ano deve conter apenas números ou /, ex: 2020/2021").notRequired(),
+    year: yup.number().notRequired(),
     fuel: yup.string().notRequired(),
-    odometer: yup.string().notRequired(),
+    odometer: yup.number().notRequired(),
     color: yup.string().notRequired(),
     fipe: yup.string().notRequired(),
-    price: yup.string().notRequired(),
+    price: yup.number().notRequired(),
     description: yup.string().notRequired(),
     isPublished: yup.boolean().notRequired(),
     images:yup.array().of(yup.object().shape({
@@ -39,12 +38,12 @@ export const returnRegisterAdvertise = yup.object().shape({
     id: yup.string().required(),
     brand: yup.string().required(),
     model: yup.string().required(),
-    year: yup.string().required(),
+    year: yup.number().required(),
     fuel: yup.string().required(),
-    odometer: yup.string().required(),
+    odometer: yup.number().required(),
     color: yup.string().required(),
     fipe: yup.string().required(),
-    price: yup.string().required(),
+    price: yup.number().required(),
     description: yup.string().required(),
     isPublished: yup.boolean().required(),
     createdAt: yup.date().required(),
@@ -53,16 +52,17 @@ export const returnRegisterAdvertise = yup.object().shape({
         img:yup.string().required()
     }))
 });
+
 export const returnUpdateAdvertise = yup.object().shape({
     id: yup.string().required(),
     brand: yup.string(),
     model: yup.string(),
-    year: yup.string(),
+    year: yup.number(),
     fuel: yup.string(),
-    odometer: yup.string(),
+    odometer: yup.number(),
     color: yup.string(),
     fipe: yup.string(),
-    price: yup.string(),
+    price: yup.number(),
     description: yup.string(),
     isPublished: yup.boolean(),
     createdAt: yup.date(),
