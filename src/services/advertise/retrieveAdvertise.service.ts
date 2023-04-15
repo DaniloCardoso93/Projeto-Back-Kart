@@ -2,7 +2,7 @@ import Announcement from "../../entities/announcement.entities"
 import { AppError } from "../../errors"
 import { announcementRepo } from "../../repositories"
 
-const getAdvertiseByIdService = async (advertiseId:string):Promise<Announcement> => {
+const retrieveAdvertiseService = async (advertiseId:string):Promise<Announcement> => {
     
     try {
         const advertise = await announcementRepo.findOne({
@@ -10,6 +10,7 @@ const getAdvertiseByIdService = async (advertiseId:string):Promise<Announcement>
                 id:advertiseId            
             },
             relations:{
+                user:true,
                 images:true
             }
         })
@@ -21,9 +22,9 @@ const getAdvertiseByIdService = async (advertiseId:string):Promise<Announcement>
         return advertise
         
     } catch (error) {
-        throw new AppError("Advertise not found", 404)
+        throw new AppError("Advertise not found!", 404)
     }
 }
 
 
-export default getAdvertiseByIdService
+export default retrieveAdvertiseService

@@ -1,4 +1,4 @@
-import { iListAdvertiseWithPage } from "../../interfaces/advertise.interfaces"
+import { iListAdvertiseWithPage, iPagination } from "../../interfaces/advertise.interfaces"
 import { announcementRepo } from "../../repositories"
 import { Request } from "express"
 
@@ -18,7 +18,7 @@ const getAllAdvertiseService = async (req:Request):Promise<iListAdvertiseWithPag
 
     const totalPages = Math.ceil(total / pageSize)
 
-    const pagination = {
+    const pagination:iPagination = {
         page:page,
         pageSize:pageSize,
         total:total,

@@ -12,10 +12,11 @@ export const registerAdvertise = yup.object().shape({
     fipe: yup.string().required(),
     price: yup.number().required(),
     description: yup.string().required(),
-    images:yup.array().of(yup.object().shape({
+    images:yup.array().required().of(yup.object().shape({
         img:yup.string().required()
     }))
 });
+
 export const updateAdvertise = yup.object().shape({
     brand: yup.string().notRequired(),
     model: yup.string().notRequired(),

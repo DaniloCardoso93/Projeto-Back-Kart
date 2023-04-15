@@ -52,14 +52,14 @@ import Comment from "./comments.entities"
     @UpdateDateColumn()
     updatedAt:Date
 
-    @OneToMany(() => Image, (images)=> images.announcement, {onDelete:"CASCADE"})
+    @OneToMany(() => Image, (images)=> images.announcement, {cascade:true})
     images:Image[]
 
-   //  @ManyToOne(() => User, (user)=> user.announcements)
-   //  user:User
+    @ManyToOne(() => User, (user)=> user.announcements, {onDelete:"CASCADE"})
+    user:User
 
-   //  @OneToMany(() => Comment, (comments)=> comments.announcement)
-   //  comments:Comment[]
+    @OneToMany(() => Comment, (comments)=> comments.announcement)
+    comments:Comment[]
 
  }
 

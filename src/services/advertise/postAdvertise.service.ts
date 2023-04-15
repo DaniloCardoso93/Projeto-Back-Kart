@@ -8,13 +8,13 @@ const postAdvertiseService = async (data:iAdvertiseResponse):Promise<Announcemen
     
     await announcementRepo.save(advertise)
 
-    data.images.forEach(async(element)=>{
-        const images = imageRepo.create(element)
-        await imageRepo.save({
-            ...images,
-            announcement:advertise
-        })
-    })
+    // data.images.forEach(async(element)=>{
+    //     const images = imageRepo.create(element)
+    //     await imageRepo.save({
+    //         ...images,
+    //         announcement:advertise
+    //     })
+    // })
 
     return advertise
 }

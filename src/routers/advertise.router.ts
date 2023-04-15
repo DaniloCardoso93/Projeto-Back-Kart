@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { deleteAdvertiseController, getAdvertiseByIdController, getAllAdvertiseController, patchAdvertiseController, postAdvertiseController } from "../controllers/advertise.controller"
+import { deleteAdvertiseController, retrieveAdvertiseController, getAllAdvertiseController, patchAdvertiseController, postAdvertiseController } from "../controllers/advertise.controller"
 import validateSchemaMiddleware from "../middlewares/validatedSchema.middleware"
 import { registerAdvertise, updateAdvertise } from "../schemas"
 
@@ -10,7 +10,7 @@ advertiseRouter.get("", getAllAdvertiseController)
 
 advertiseRouter.post("", validateSchemaMiddleware(registerAdvertise), postAdvertiseController)
 
-advertiseRouter.get("/:id", getAdvertiseByIdController)
+advertiseRouter.get("/:id", retrieveAdvertiseController)
 
 advertiseRouter.patch("/:id", validateSchemaMiddleware(updateAdvertise), patchAdvertiseController)
 
