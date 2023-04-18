@@ -1,17 +1,24 @@
 import { AppError } from "../../errors"
+import { iResponseUser } from "../../interfaces/user.interface";
 import { userRepo } from "../../repositories"
+import { returnUserShape } from "../../schemas";
 
-const retrieveUserService = async (userId:string):Promise<any> => {
+const retrieveUserService = async (userId:string):Promise<iResponseUser> => {
     try {
         const user = await userRepo
         .createQueryBuilder('users')
         .leftJoinAndSelect('users.address', 'address')
         .leftJoinAndSelect("users.announcements", "announcement")
-        // .leftJoinAndSelect("users.comments", "comment")  CASO QUEIRA OS COMENTARIOS E SÓ TIRAR O COMMENT DESSA LINHA
+        .leftJoinAndSelect("users.comments", "comment")
         .where('users.id = :id', { id: userId })
         .getOneOrFail();
 
-        return user
+        
+        const resUser = await returnUserShape.validate(user, {
+            stripUnknown:true
+        }) as iResponseUser
+
+        return resUser
 
     } catch (error) {
         throw new AppError("User not found", 404)

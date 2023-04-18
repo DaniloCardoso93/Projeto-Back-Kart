@@ -65,7 +65,7 @@ import Address from "./address.entities"
     @BeforeUpdate()
     @BeforeInsert()
     hashPassword(){
-        this.password = hashSync(this.password, 10)
+        if(this.password) this.password = hashSync(this.password, 10)
     }
  }
 

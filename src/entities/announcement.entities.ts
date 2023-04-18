@@ -40,7 +40,7 @@ import Comment from "./comments.entities"
     @Column()
     price:number
 
-    @Column({length:250})
+    @Column({length:500})
     description:string
 
     @Column({default:true})
