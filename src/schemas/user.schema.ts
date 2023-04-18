@@ -6,7 +6,7 @@ import * as yup from "yup";
 export const registerUserShape = yup.object().shape({
     fullName: yup.string().required(),
     cpf: yup.string().required(),
-    cellphone: yup.number().required(),
+    cellphone: yup.string().required(),
     birthdate: yup.string().required(),
     password: yup.string().required(),
     email: yup.string().email().required(),
@@ -94,7 +94,7 @@ export const returnUserShape = yup.object().shape({
 
 
 export const returnRegisterShapeUser = yup.object().shape({
-    address: yup.object().shape({
+    address: yup.object().required().shape({
         id:yup.string().required(),
         zipCode:yup.string().required(),
         street:yup.string().required(),
@@ -108,7 +108,7 @@ export const returnRegisterShapeUser = yup.object().shape({
     createdAt: yup.date().required(),
     isAdvertiser: yup.boolean().required(),
     bio: yup.string().required(),
-    email: yup.string().required(),
+    email: yup.string().email().required(),
     birthdate: yup.string().required(),
     cellphone: yup.string().required(),
     cpf: yup.string().required(),
@@ -129,3 +129,19 @@ export const updateResponseUserShape = yup.object().shape({
     fullName: yup.string().required(),
     id: yup.string().required(),
 });
+
+export const userArrayReturnedShape = yup.array().of(
+    yup.object().shape({
+        isActive: yup.boolean().required(),
+        updatedAt: yup.date().required(),
+        createdAt: yup.date().required(),
+        isAdvertiser: yup.boolean().required(),
+        bio: yup.string().required(),
+        email: yup.string().required(),
+        birthdate: yup.string().required(),
+        cellphone: yup.string().required(),
+        cpf: yup.string().required(),
+        fullName: yup.string().required(),
+        id: yup.string().required(),
+    })
+)

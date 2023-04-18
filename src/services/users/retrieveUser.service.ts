@@ -13,7 +13,6 @@ const retrieveUserService = async (userId:string):Promise<iResponseUser> => {
         .where('users.id = :id', { id: userId })
         .getOneOrFail();
 
-        
         const resUser = await returnUserShape.validate(user, {
             stripUnknown:true
         }) as iResponseUser

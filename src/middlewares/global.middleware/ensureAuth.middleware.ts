@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 
 import jwt from "jsonwebtoken";
 import "dotenv/config";
-import { AppError } from "../errors";
+import { AppError } from "../../errors";
 
 const ensureAuthMiddleware = async (
   req: Request,

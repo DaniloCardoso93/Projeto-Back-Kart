@@ -1,9 +1,10 @@
 import { AppError } from "../../errors"
+import { iLogin, iToken } from "../../interfaces/sessions.interface"
 import { userRepo } from "../../repositories"
 import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
 
-const loginUserService = async(data:any):Promise<any> => {
+const loginUserService = async(data:iLogin):Promise<iToken> => {
 
     try {
     const user = await userRepo

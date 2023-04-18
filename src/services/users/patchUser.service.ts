@@ -20,7 +20,9 @@ const patchUserService = async(data:any, userId:string):Promise<any> => {
 
 try {
 
-    const findUser = await userRepo.findOneByOrFail({id:userId})
+    const findUser = await userRepo.findOneBy({id: userId})
+
+    if(!findUser) throw new AppError("User not found!", 404)
     
     const user = await updateResponseUserShape.validate(findUser,{
         stripUnknown:true        
@@ -42,8 +44,7 @@ try {
 
 
 } catch (error) {
-    console.log(error)
-
+    throw new AppError("User not found!", 404)
 }
 }
 

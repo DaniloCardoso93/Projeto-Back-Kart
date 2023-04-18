@@ -12,7 +12,9 @@ const getAllAdvertiseService = async (req:Request):Promise<iListAdvertiseWithPag
         take:pageSize,
         skip,
         relations:{
-            images:true
+            images:true,
+            user:true,
+            comments:true
         }
     })
 

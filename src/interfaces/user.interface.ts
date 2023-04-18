@@ -9,6 +9,21 @@ export interface iRegisterUser {
 	address: iAddress
 }
 
+export interface iResponseRegisterUser {
+	id:string,
+    fullName:string,
+	cpf:string,
+	cellphone:string,
+	email:string,
+	bio:string,
+	birthdate:string,
+    isAdvertiser:boolean,
+    createdAt:Date,
+    updatedAt:Date,
+    isActive:boolean,
+	address: iResponseAddress
+}
+
 export interface iAddress {
 	zipCode:string,
 	street:string,
@@ -54,18 +69,18 @@ export interface iResponseAddress {
 	complement?:string
 }
 export interface iResponseUser {
-    id?:string,
-    fullName?:string,
-	cpf?:string,
-	cellphone?:string,
-	email?:string,
-	bio?:string,
-	birthdate?:string,
-    isAdvertiser?:boolean,
-    createdAt?:Date,
-    updatedAt?:Date,
-    isActive?:boolean,
-	address?: iResponseAddress
-    announcements?:iResponseAnnouncements[],
-    comments?:iResponseComments[],
+    id:string,
+    fullName:string,
+	cpf:string,
+	cellphone:string,
+	email:string,
+	bio:string,
+	birthdate:string,
+    isAdvertiser:boolean,
+    createdAt:Date,
+    updatedAt:Date,
+    isActive:boolean,
+	address: iResponseAddress
+    announcements:iResponseAnnouncements[],
+    comments:iResponseComments[],
 }

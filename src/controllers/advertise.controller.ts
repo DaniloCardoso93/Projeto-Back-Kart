@@ -12,7 +12,7 @@ const getAllAdvertiseController = async (
 
 
 const postAdvertiseController = async (req: Request, res: Response):Promise<Response> => { 
-  const data = await postAdvertiseService(req.body); 
+  const data = await postAdvertiseService(req.body, req.userId.id); 
   return res.status(201).json(data);
 };
 

@@ -7,6 +7,7 @@ import getAllUserService from "./users/getAllUser.service";
 import deleteUserService from "./users/deleteUser.service";
 import patchUserService from "./users/patchUser.service";
 import retrieveUserService from "./users/retrieveUser.service";
+import getProfileService from "./users/getProfile.service";
 
 export {
     getAllAdvertiseService,
@@ -18,4 +19,5 @@ export {
     deleteUserService,
     patchUserService,
     retrieveUserService,
+    getProfileService,
 }

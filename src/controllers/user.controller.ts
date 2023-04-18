@@ -1,10 +1,16 @@
 import { Request, Response } from "express";
-import { deleteUserService, getAllUserService, patchUserService, retrieveUserService } from "../services";
+import { deleteUserService, getAllUserService, patchUserService, retrieveUserService, getProfileService } from "../services";
 import postUserService from "../services/users/postUser.service";
+
 
 const getAllUserController = async (req:Request, res:Response):Promise<Response> => {
     const { pagination, users } = await getAllUserService(req)
     return res.status(200).json({...pagination, users:{...users}})
+}
+
+const getProfileController = async (req:Request, res:Response):Promise<Response> => {
+    const data = await getProfileService(req.headers.authorization)
+    return res.status(200).json(data)
 }
 
 const retrieveUserController = async (req:Request, res:Response):Promise<Response> =>{
@@ -34,4 +40,5 @@ export {
     patchUserController,
     deleteUserController,
     postUserController,
+    getProfileController
 }

@@ -1,5 +1,6 @@
 import { Request } from "express";
 import { userRepo } from "../../repositories";
+import { userArrayReturnedShape } from "../../schemas/user.schema";
 
 const getAllUserService = async (req:Request):Promise<any> => {
     const pageSize = 16
@@ -22,7 +23,11 @@ const getAllUserService = async (req:Request):Promise<any> => {
         previusPage: page - 1 === 0 ? null : page - 1
     }
 
-    return {pagination:{...pagination}, users:{...result}}
+    const userRes = await userArrayReturnedShape.validate(result, {
+        stripUnknown:true
+    })
+
+    return {pagination:{...pagination}, users:{...userRes}}
 }
 
 export default getAllUserService
