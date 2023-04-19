@@ -1,7 +1,7 @@
 import { Router } from "express"
-import { deleteUserController, getAllUserController, patchUserController, postUserController, retrieveUserController } from "../controllers/user.controller"
+import { deleteUserController, getAllUserController, getProfileController, patchUserController, postUserController, retrieveUserController } from "../controllers/user.controller"
 import { registerUserShape, updateUserShape } from "../schemas"
-import { validateSchemaMiddleware, verifyCpfExists, verifyEmailExists } from "../middlewares"
+import { ensureAuthMiddleware, validateSchemaMiddleware, verifyCpfExists, verifyEmailExists } from "../middlewares"
 
 
 export const userRouter = Router()
@@ -15,14 +15,14 @@ verifyCpfExists,
 postUserController,
 )
 
+userRouter.get("/profile", ensureAuthMiddleware, getProfileController)
 
 userRouter.get("/:id", retrieveUserController)
 
-userRouter.patch("/:id",validateSchemaMiddleware(updateUserShape), patchUserController)
+userRouter.patch("/:id", ensureAuthMiddleware, validateSchemaMiddleware(updateUserShape), patchUserController)
 
-userRouter.delete("/:id", deleteUserController)
+userRouter.delete("/:id", ensureAuthMiddleware, deleteUserController)
 
-userRouter.get("/profile", )
 
 
 export default userRouter

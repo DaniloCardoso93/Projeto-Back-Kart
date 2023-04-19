@@ -1,3 +1,5 @@
+import ensureAnnouncementParamsIdExistsMiddleware from "./announcement.middleware/ensureAnnouncementParamsIdExists.middleware";
+import ensureLoggerUserOwnerAnnouncementMiddleware from "./announcement.middleware/ensureLoggerUserOwnerAnnouncement.middleware";
 import ensureAuthMiddleware from "./global.middleware/ensureAuth.middleware";
 import validateSchemaMiddleware from "./global.middleware/validatedSchema.middleware";
 import verifyCpfExists from "./user.middleware/verifyCpfExists.middleware";
@@ -9,4 +11,6 @@ export{
     validateSchemaMiddleware,
     verifyEmailExists,
     verifyCpfExists,
+    ensureLoggerUserOwnerAnnouncementMiddleware,
+    ensureAnnouncementParamsIdExistsMiddleware
 }

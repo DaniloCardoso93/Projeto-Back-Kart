@@ -3,6 +3,7 @@ import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import "dotenv/config";
 import { AppError } from "../../errors";
+import { userRepo } from "../../repositories";
 
 const ensureAuthMiddleware = async (
   req: Request,
@@ -17,10 +18,15 @@ const ensureAuthMiddleware = async (
 
   const token = authToken.split(" ")[1];
 
-  return jwt.verify(token, process.env.SECRET_KEY, (error, decoded: any) => {
+  return jwt.verify(token, process.env.SECRET_KEY, async (error, decoded: any) => {
     if (error) {
       throw new AppError("Invalid token", 401);
     }
+    
+    const user = await userRepo.findOneBy({id:decoded.sub})
+
+    if(!user) throw new AppError("Invalid token", 401);
+    
     req.userId = { id: decoded.sub };
     return next();
   });

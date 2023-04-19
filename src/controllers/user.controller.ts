@@ -9,7 +9,7 @@ const getAllUserController = async (req:Request, res:Response):Promise<Response>
 }
 
 const getProfileController = async (req:Request, res:Response):Promise<Response> => {
-    const data = await getProfileService(req.headers.authorization)
+    const data = await getProfileService(req.userId.id)
     return res.status(200).json(data)
 }
 
