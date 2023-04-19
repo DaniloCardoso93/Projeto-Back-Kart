@@ -7,9 +7,12 @@ import {
     OneToMany,
     BeforeUpdate,
     BeforeInsert,
+    OneToOne,
+    JoinColumn,
  } from "typeorm"
 import Announcement from "./announcement.entities"
 import Comment from "./comments.entities"
+import Address from "./address.entities"
 
  @Entity("users")
  class User {
@@ -32,7 +35,7 @@ import Comment from "./comments.entities"
     @Column({length: 150})
     password:string
 
-    @Column({length: 14, unique:true})
+    @Column({length: 250, unique:true})
     email:string
 
     @Column({length: 250})
@@ -50,16 +53,19 @@ import Comment from "./comments.entities"
     @Column({default:true})
     isActive:boolean
 
-    // @OneToMany(() => Announcement, (announcements) => announcements.user)
-    // announcements:Announcement[]
+    @OneToMany(() => Announcement, (announcements) => announcements.user)
+    announcements:Announcement[]
 
-    // @OneToMany(() => Comment, (comments)=> comments.user)
-    // comments:Comment[]
+    @OneToMany(() => Comment, (comments)=> comments.user)
+    comments:Comment[]
+
+    @OneToOne(() => Address, (address) => address.user, {cascade:true})
+    address: Address;
 
     @BeforeUpdate()
     @BeforeInsert()
     hashPassword(){
-        this.password = hashSync(this.password, 10)
+        if(this.password) this.password = hashSync(this.password, 10)
     }
  }
 
