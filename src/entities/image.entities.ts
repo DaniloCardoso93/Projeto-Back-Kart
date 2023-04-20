@@ -15,7 +15,7 @@ import Announcement from "./announcement.entities"
     @Column()
     img:string
 
-    @ManyToOne(() => Announcement, (announcement)=> announcement.images)
+    @ManyToOne(() => Announcement, (announcement)=> announcement.images, {onDelete:"CASCADE"})
     announcement:Announcement
  }
 

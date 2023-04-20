@@ -13,6 +13,34 @@ export interface iAdvertiseResponse {
     createdAt: Date,
     updatedAt: Date,
     images: iImages[]
+    comments:iComments[],
+    user:{
+        id:string,
+        fullName:string,
+        cpf:string,
+        cellphone:string,
+        email:string,
+        bio:string,
+        birthdate:string,
+        isAdvertiser:boolean,
+        createdAt:Date,
+        updatedAt:Date,
+        isActive:boolean,
+    }
+}
+
+export interface iUser {
+    id:string,
+    fullName:string,
+	cpf:string,
+	cellphone:string,
+	email:string,
+	bio:string,
+	birthdate:string,
+    isAdvertiser:boolean,
+    createdAt:Date,
+    updatedAt:Date,
+    isActive:boolean,
 }
 
 export interface iUpdateAdvertiseData {
@@ -33,6 +61,11 @@ export interface iUpdateAdvertiseData {
 
 export interface iImages{
     img:string
+}
+
+export interface iComments{
+    id:string,
+    comment:string
 }
 
 

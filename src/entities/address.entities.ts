@@ -28,10 +28,10 @@ import User from "./user.entities"
     @Column({length:50})
     number:string
     
-    @Column({length:250})
+    @Column({length:250, nullable:true, default:""})
     complement:string
     
-    @OneToOne(() => User)
+    @OneToOne(() => User, (user) => user.address, {onDelete:"CASCADE"})
     @JoinColumn()
     user: User
  }

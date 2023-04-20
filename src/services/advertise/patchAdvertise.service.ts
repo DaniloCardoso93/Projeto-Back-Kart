@@ -2,7 +2,6 @@ import Announcement from "../../entities/announcement.entities"
 import { AppError } from "../../errors"
 import { iUpdateAdvertiseData } from "../../interfaces/advertise.interfaces"
 import { announcementRepo, imageRepo } from "../../repositories"
-import { returnUpdateAdvertise } from "../../schemas/advertise.schema"
 
 const patchAdvertiseService = async (data:iUpdateAdvertiseData, advertiseId:string):Promise<Announcement> => {
 
@@ -13,7 +12,7 @@ const patchAdvertiseService = async (data:iUpdateAdvertiseData, advertiseId:stri
                 id:advertiseId
             },
             relations:{
-                images:true
+                images:true,
             }
         })
     

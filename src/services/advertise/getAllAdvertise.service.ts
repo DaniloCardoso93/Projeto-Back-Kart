@@ -1,8 +1,9 @@
-import { iListAdvertiseWithPage } from "../../interfaces/advertise.interfaces"
+import { iListAdvertiseWithPage, iPagination } from "../../interfaces/advertise.interfaces"
 import { announcementRepo } from "../../repositories"
 import { Request } from "express"
+import { returnedArrayAnnouncementShape } from "../../schemas/advertise.schema"
 
-const getAllAdvertiseService = async (req:Request):Promise<iListAdvertiseWithPage> => {
+const getAllAdvertiseService = async (req:Request) => {
 
     const pageSize = 16
     const page = parseInt(req.query.page as string) || 1
@@ -12,13 +13,15 @@ const getAllAdvertiseService = async (req:Request):Promise<iListAdvertiseWithPag
         take:pageSize,
         skip,
         relations:{
-            images:true
+            images:true,
+            user:true,
+            comments:true
         }
     })
 
     const totalPages = Math.ceil(total / pageSize)
 
-    const pagination = {
+    const pagination:iPagination = {
         page:page,
         pageSize:pageSize,
         total:total,
@@ -27,7 +30,11 @@ const getAllAdvertiseService = async (req:Request):Promise<iListAdvertiseWithPag
         previusPage: page - 1 === 0 ? null : page - 1
     }
 
-    return {pagination:{...pagination}, announcement:{...advertise}}
+    const validatedAnnouncement = await returnedArrayAnnouncementShape.validate(advertise, {
+        stripUnknown:true
+    })
+
+    return {pagination:{...pagination}, announcement:{...validatedAnnouncement}}
 }
 
 export default getAllAdvertiseService
