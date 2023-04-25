@@ -53,22 +53,22 @@ export const returnUserShape = yup.object().shape({
         comment:yup.string()
     })),
     announcements:yup.array().required().of(yup.object().shape({
-        id: yup.string(),
-        brand: yup.string(),
-        model: yup.string(),
-        year: yup.number(),
-        fuel: yup.string(),
-        odometer: yup.number(),
-        color: yup.string(),
-        fipe: yup.string(),
-        price: yup.number(),
-        description: yup.string(),
-        isPublished: yup.boolean(),
-        createdAt: yup.date(),
-        updatedAt: yup.date(),
         images:yup.array().of(yup.object().shape({
             img:yup.string()
-        }))
+        })),
+        updatedAt: yup.date(),
+        createdAt: yup.date(),
+        isPublished: yup.boolean(),
+        description: yup.string(),
+        fipe: yup.string(),
+        price: yup.number(),
+        color: yup.string(),
+        odometer: yup.number(),
+        fuel: yup.string(),
+        year: yup.number(),
+        model: yup.string(),
+        brand: yup.string(),
+        id: yup.string(),
     })),
     address: yup.object().required().shape({
         id:yup.string().required(),

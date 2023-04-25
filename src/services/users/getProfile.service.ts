@@ -7,6 +7,7 @@ const getProfileService = async (userId:string):Promise<iResponseUser> =>{
     .createQueryBuilder("users")
     .leftJoinAndSelect("users.address", "adress")
     .leftJoinAndSelect("users.announcements", "announcement")
+    .leftJoinAndSelect("announcement.images", "images")
     .leftJoinAndSelect("users.comments", "comments")
     .where("users.id = :id", {id: userId})
     .getOneOrFail()
