@@ -145,3 +145,4 @@ export const userArrayReturnedShape = yup.array().of(
         id: yup.string().required(),
     })
 )
+
