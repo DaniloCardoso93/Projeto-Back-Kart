@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { deleteUserController, getAllUserController, getProfileController, patchUserController, postUserController, retrieveUserController } from "../controllers/user.controller"
+import { deleteUserController, getAllUserController, getProfileController, patchResetPasswordController, patchUserController, postResetEmailPasswordController, postUserController, retrieveUserController } from "../controllers/user.controller"
 import { registerUserShape, updateUserShape } from "../schemas"
 import { ensureAuthMiddleware, validateSchemaMiddleware, verifyCpfExists, verifyEmailExists } from "../middlewares"
 
@@ -14,6 +14,11 @@ verifyEmailExists,
 verifyCpfExists, 
 postUserController,
 )
+
+userRouter.post("/resetPassword", postResetEmailPasswordController)
+
+userRouter.patch("/resetPassword/:token", patchResetPasswordController)
+
 
 userRouter.get("/profile", ensureAuthMiddleware, getProfileController)
 

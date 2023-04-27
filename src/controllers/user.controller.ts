@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
-import { deleteUserService, getAllUserService, patchUserService, retrieveUserService, getProfileService } from "../services";
-import postUserService from "../services/users/postUser.service";
+import { deleteUserService, getAllUserService, patchUserService, retrieveUserService, getProfileService, postUserService, postResetPasswordService, patchResetPasswordService } from "../services";
+
+
 
 
 const getAllUserController = async (req:Request, res:Response):Promise<Response> => {
@@ -10,6 +11,7 @@ const getAllUserController = async (req:Request, res:Response):Promise<Response>
 
 const getProfileController = async (req:Request, res:Response):Promise<Response> => {
     const data = await getProfileService(req.userId.id)
+
     return res.status(200).json(data)
 }
 
@@ -34,11 +36,32 @@ const deleteUserController = async(req:Request, res:Response):Promise<Response> 
     return res.status(204).json()
 }
 
+const postResetEmailPasswordController = async (req:Request, res:Response):Promise<Response> => {
+    console.log("to no controller")
+    const {email} = req.body
+    const {protocol} = req
+    const host = req.get("host")
+
+    await postResetPasswordService(email, protocol, host!)
+    return res.json({message: "token send"})
+}
+
+const patchResetPasswordController = async (req:Request, res:Response) =>{
+    const {password} = req.body
+    const {token} = req.params
+
+    await patchResetPasswordService(password, token)
+    return res.json({message: "password change with sucess"})
+}
+
+
 export {
     getAllUserController,
     retrieveUserController,
     patchUserController,
     deleteUserController,
     postUserController,
-    getProfileController
+    getProfileController,
+    postResetEmailPasswordController,
+    patchResetPasswordController
 }

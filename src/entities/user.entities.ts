@@ -44,6 +44,9 @@ import Address from "./address.entities"
     @Column({default:true})
     isAdvertiser:boolean
 
+    @Column({nullable:true})
+    resetToken: string
+
     @CreateDateColumn()
     createdAt:Date
 

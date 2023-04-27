@@ -8,6 +8,10 @@ import deleteUserService from "./users/deleteUser.service";
 import patchUserService from "./users/patchUser.service";
 import retrieveUserService from "./users/retrieveUser.service";
 import getProfileService from "./users/getProfile.service";
+import postUserService from "./users/postUser.service";
+import postResetPasswordService from "./users/postResetPassword.service";
+import patchResetPasswordService from "./users/patchResetPassword.service";
+
 
 export {
     getAllAdvertiseService,
@@ -20,4 +24,8 @@ export {
     patchUserService,
     retrieveUserService,
     getProfileService,
+    postUserService,
+    postResetPasswordService,
+    patchResetPasswordService,
+
 }
