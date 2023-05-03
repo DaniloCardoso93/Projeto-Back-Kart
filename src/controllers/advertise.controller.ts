@@ -1,6 +1,6 @@
 import {Request, Response } from "express"
-import { deleteAdvertiseService, getAllAdvertiseService, patchAdvertiseService, postAdvertiseService } from "../services";
-import retrieveAdvertiseService from "../services/advertise/retrieveAdvertise.service";
+import { deleteAdvertiseService, getAllAdvertiseService, patchAdvertiseService, postAdvertiseService, retrieveAdvertiseService } from "../services";
+
 
 const getAllAdvertiseController = async (
     req: Request,

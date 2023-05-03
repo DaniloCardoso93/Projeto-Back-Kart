@@ -2,7 +2,9 @@ import {
     Entity, 
     PrimaryGeneratedColumn, 
     Column,
-    ManyToOne
+    ManyToOne,
+    CreateDateColumn,
+    UpdateDateColumn
  } from "typeorm"
 import Announcement from "./announcement.entities"
 import User from "./user.entities"
@@ -16,10 +18,16 @@ import User from "./user.entities"
     @Column({length:500})
     description:string
 
-    @ManyToOne( () => Announcement, (announcement)=> announcement.comments, {onDelete:"CASCADE"})
+    @CreateDateColumn()
+    createdAt:Date
+
+    @UpdateDateColumn()
+    updatedAt:Date
+
+    @ManyToOne(() => Announcement, (announcement)=> announcement.comments, {onDelete:"CASCADE"})
     announcement:Announcement
 
-    @ManyToOne( ()=> User, (user)=> user.comments, {onDelete:"CASCADE"})
+    @ManyToOne(()=> User, (user)=> user.comments, {onDelete:"CASCADE"})
     user:User
  }
 
