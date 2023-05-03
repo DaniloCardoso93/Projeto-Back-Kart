@@ -1,4 +1,4 @@
-import { iListAdvertiseWithPage, iPagination } from "../../interfaces/advertise.interfaces"
+import { iPagination } from "../../interfaces/advertise.interfaces"
 import { announcementRepo } from "../../repositories"
 import { Request } from "express"
 import { returnedArrayAnnouncementShape } from "../../schemas/advertise.schema"
@@ -14,8 +14,7 @@ const getAllAdvertiseService = async (req:Request) => {
         skip,
         relations:{
             images:true,
-            user:true,
-            comments:true
+            user:true
         }
     })
 

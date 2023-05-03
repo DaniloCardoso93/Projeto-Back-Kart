@@ -11,7 +11,7 @@ import getProfileService from "./users/getProfile.service";
 import postUserService from "./users/postUser.service";
 import postResetPasswordService from "./users/postResetPassword.service";
 import patchResetPasswordService from "./users/patchResetPassword.service";
-
+import postCommentsService from "./comments/postComments.service";
 
 export {
     getAllAdvertiseService,
@@ -27,5 +27,6 @@ export {
     postUserService,
     postResetPasswordService,
     patchResetPasswordService,
+    postCommentsService,
 
 }

@@ -4,10 +4,12 @@ import { AppError } from "../../errors";
 
 const ensureAnnouncementParamsIdExistsMiddleware = async (req:Request, res: Response, next: NextFunction) => {
     try {
-        await announcementRepo
+       const announcement = await announcementRepo
         .createQueryBuilder("announcement")
         .where("announcement.id = :id", {id:req.params.id})
         .getOneOrFail()
+
+        req.announcement = {...announcement}
         
         return next()
 

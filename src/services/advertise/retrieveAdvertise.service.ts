@@ -1,4 +1,3 @@
-import Announcement from "../../entities/announcement.entities";
 import { AppError } from "../../errors";
 import { announcementRepo } from "../../repositories";
 import { returnedAnnouncementShape } from "../../schemas/advertise.schema";
@@ -10,6 +9,7 @@ const retrieveAdvertiseService = async (advertiseId: string): Promise<any> => {
       .leftJoinAndSelect("announcement.user", "user")
       .leftJoinAndSelect("announcement.images", "images")
       .leftJoinAndSelect("announcement.comments", "comment")
+      .leftJoinAndSelect("comment.user", "users")
       .where("announcement.id = :id", { id: advertiseId })
       .getOneOrFail();
 

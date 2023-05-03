@@ -1,3 +1,22 @@
+export interface iUser {
+	id: string,
+	fullName: string,
+	cpf: string,
+	cellphone: string,
+	birthdate: string,
+	password: string,
+	email: string,
+	bio: string,
+	isAdvertiser: boolean,
+	resetToken: null | string,
+	createdAt: Date,
+	updatedAt: Date,
+	isActive: boolean
+}
+
+
+
+
 export interface iRegisterUser {
     fullName:string,
 	cpf:string,

@@ -1,3 +1,19 @@
+export interface iAdvertise {
+    id: string,
+    brand: string,
+    model: string,
+    year: number,
+    fuel: string,
+    odometer: number,
+    color: string,
+    fipe: string,
+    price: number,
+    description: string,
+    isPublished: boolean,
+    createdAt: Date,
+    updatedAt: Date
+}
+
 export interface iAdvertiseResponse {
     id: string,
     brand: string,
@@ -13,7 +29,7 @@ export interface iAdvertiseResponse {
     createdAt: Date,
     updatedAt: Date,
     images: iImages[]
-    comments:iComments[],
+    comments?:iComments[],
     user:{
         id:string,
         fullName:string,
@@ -22,6 +38,36 @@ export interface iAdvertiseResponse {
         email:string,
         bio:string,
         birthdate:string,
+        isAdvertiser:boolean,
+        createdAt:Date,
+        updatedAt:Date,
+        isActive:boolean,
+    }
+}
+
+export interface iCreateAdvertiseResponse {
+    id?: string,
+    brand?: string,
+    model?: string,
+    year?: number,
+    fuel?: string,
+    odometer?: number,
+    color?: string,
+    fipe?: string,
+    price?: number,
+    description?: string,
+    isPublished?: boolean,
+    createdAt?: Date,
+    updatedAt?: Date,
+    images?: iImages[]
+    user?:{
+        id:string,
+        fullName:string,
+        cpf:string,
+        cellphone:string,
+        birthdate:string,
+        email:string,
+        bio:string,
         isAdvertiser:boolean,
         createdAt:Date,
         updatedAt:Date,
