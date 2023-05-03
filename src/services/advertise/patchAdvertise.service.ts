@@ -6,27 +6,14 @@ import { announcementRepo, imageRepo } from "../../repositories"
 const patchAdvertiseService = async (data:iUpdateAdvertiseData, advertiseId:string):Promise<Announcement> => {
 
     try {
-
-        const findAdvertise = await announcementRepo.findOne({
-            where:{
-                id:advertiseId
-            },
-            relations:{
-                images:true,
-            }
-        })
+        const findAdvertise = await announcementRepo
+        .createQueryBuilder("announcement")
+        .leftJoinAndSelect("announcement.images", "images")
+        .where("announcement.id = :id", {id:advertiseId})
+        .getOneOrFail()
     
         if(!findAdvertise){
             throw new AppError("Advertise not found!", 404)
-        }
-        if(data.images){
-            data.images.forEach(async(element)=>{
-                const images = imageRepo.create(element)
-                await imageRepo.save({
-                    ...images,
-                    announcement:findAdvertise
-                })
-            })
         }
     
         const updateAdvertise = announcementRepo.create({
