@@ -1,0 +1,36 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\levit\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js init
+
+PATH: 
+  C:\Users\levit\bin;F:\Arquivos de programa\Git\mingw64\bin;F:\Arquivos de programa\Git\usr\local\bin;F:\Arquivos de programa\Git\usr\bin;F:\Arquivos de programa\Git\usr\bin;F:\Arquivos de programa\Git\mingw64\bin;F:\Arquivos de programa\Git\usr\bin;C:\Users\levit\bin;C:\Program Files\Eclipse Adoptium\jre-8.0.362.9-hotspot\bin;C:\Program Files\Eclipse Adoptium\jre-17.0.6.10-hotspot\bin;C:\Program Files\Eclipse Adoptium\jre-11.0.18.10-hotspot\bin;C:\Program Files (x86)\Eclipse Adoptium\jre-8.0.362.9-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files (x86)\dotnet;C:\Program Files\dotnet;F:\Arquivos de programa\Git\cmd;C:\Program Files\nodejs;C:\Users\levit\AppData\Local\Programs\Python\Python311\Scripts;C:\Users\levit\AppData\Local\Programs\Python\Python311;C:\Users\levit\AppData\Local\Microsoft\WindowsApps;F:\Arquivos de programa\Microsoft VS Code\bin;F:\Arquivos de programa\PostgreSQL\15\bin;C:\Users\levit\AppData\Roaming\npm;F:\Arquivos de programa\Git\usr\bin\vendor_perl;F:\Arquivos de programa\Git\usr\bin\core_perl
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  18.15.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: canceled
+      at Interface.<anonymous> (C:\Users\levit\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:137150:13)
+      at Interface.emit (node:events:513:28)
+      at [_ttyWrite] [as _ttyWrite] (node:internal/readline/interface:1131:18)
+      at ReadStream.onkeypress (node:internal/readline/interface:270:20)
+      at ReadStream.emit (node:events:513:28)
+      at emitKeys (node:internal/readline/utils:357:14)
+      at emitKeys.next (<anonymous>)
+      at ReadStream.onData (node:internal/readline/emitKeypressEvents:64:36)
+      at ReadStream.emit (node:events:513:28)
+      at addChunk (node:internal/streams/readable:324:12)
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
