@@ -15,8 +15,6 @@ const postCommentsService = async (data:iComment, announcement:iAdvertise, user:
         announcement:announcement
     }
 
-    console.log(user)
-
     const comment = commentRepo.create(dataCreate)
 
     await commentRepo.save(comment)

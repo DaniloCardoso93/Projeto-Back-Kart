@@ -23,12 +23,12 @@ const retrieveCommentsController = async (req: Request, res:Response):Promise<Re
 
 const patchCommentsController = async (req:Request, res:Response):Promise<Response> => {
     const data = await patchCommentsService(req.body, req.params.id)
-    return res.json(200).json(data)
+    return res.status(200).json(data)
 }
 
 const deleteCommentsController = async (req:Request, res:Response):Promise<Response> => {
     await deleteCommentsService(req.params.id)
-    return res.json(204).json()
+    return res.status(204).json()
 }
 
 
