@@ -9,7 +9,8 @@
     "dev": "ts-node-dev --ignore-watch node_modules --rs --cls src/server.ts",
     "test:": "cross-env NODE_ENV=test jest --forceExit --verbose",
     "typeorm": "typeorm-ts-node-commonjs",
-    "vercel-build": "yarn typeorm migration:run -d src/data-source.ts"
+    "build": "tsc",
+    "start": "node dist/server.js"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
