@@ -57,6 +57,13 @@ $ yarn install
 $ yarn dev
 
 # O servidor inciará na porta especificada - acesse http://localhost:[sua porta]
+# Ou execute a aplicação em modo de produção
+
+$ yarn build
+
+$ yarn start
+
+# O servidor inciará na porta especificada - acesse http://localhost:[sua porta]
 ```
 
 ## Documentação
