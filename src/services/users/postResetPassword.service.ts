@@ -1,6 +1,6 @@
 import { AppError } from "../../errors"
 import { userRepo } from "../../repositories"
-import { randomUUID } from "node:crypto"
+import { randomUUID } from "crypto"
 import { updateResponseUserShape } from "../../schemas/user.schema"
 import { resetPasswordTemplete, sendEmail } from "../../util/sendEmail.util"
 
