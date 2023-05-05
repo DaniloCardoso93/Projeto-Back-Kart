@@ -13,6 +13,7 @@ app.use(express.json());
 
 app.use(cors());
 
+app.use('/docs', express.static(__dirname + '/docs'))
 app.use("/login", loginRouter);
 app.use("/users", userRouter);
 app.use("/advertise", advertiseRouter);
